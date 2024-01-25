@@ -1,0 +1,56 @@
+<div *ngIf="visualizationMode" class="card border-info">
+    <input type="hidden" [(ngModel)]="card.id" />
+    <input type="hidden" [(ngModel)]="card.lista" />
+    <div class="card-header">
+        <div class="row">
+            <h4 class="col-8 card-titulo">{{card.titulo}}</h4>
+            <div class="col-4">
+                <button (click)="updateCard(card, checkPreviousColumn(card))" *ngIf="checkPreviousColumn(card)" mat-icon-button [matTooltip]="'Voltar para a coluna ' + checkPreviousColumn(card, true)">
+                    <mat-icon [ngStyle]="{'color':'#0dcaf0'}">arrow_circle_left</mat-icon>
+                </button>
+                <button (click)="updateCard(card, checkNextColumn(card))" *ngIf="checkNextColumn(card)" mat-icon-button [matTooltip]="'Avançar para a coluna ' + checkNextColumn(card, true)">
+                    <mat-icon [ngStyle]="{'color':'#0dcaf0'}">arrow_circle_right</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <textarea class="card-text conteudo" rows="6">{{card.conteudo}}</textarea>
+    </div>
+    <div class="col-12 btn-group btn-group-sm" role="group">
+        <button type="button" class="btn btn-sm btn-info" (click)="visualizationMode = !visualizationMode;"
+            matTooltip="Editar"><mat-icon fontIcon="edit"></mat-icon></button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="card ? dropCard(card) : null"
+            matTooltip="Excluir"><mat-icon fontIcon="delete_forever"></mat-icon></button>
+    </div>
+    <mat-progress-bar *ngIf="card.lista === 'doing'" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="card.lista === 'todo'" mode="determinate" value="0"></mat-progress-bar>
+    <mat-progress-bar *ngIf="card.lista === 'done'" mode="determinate" value="100"></mat-progress-bar>
+</div>
+
+<div *ngIf="!visualizationMode" class="card border-info">
+    <input type="hidden" [(ngModel)]="card.id" />
+    <input type="hidden" [(ngModel)]="card.lista" />
+    <div class="card-header">
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="card.titulo">
+        </mat-form-field>
+    </div>
+    <div class="card-body">
+        <mat-form-field>
+            <textarea rows="5" class="textarea-edit-mode" matInput [(ngModel)]="card.conteudo"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="card-footer">
+        <small class="col-12 btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-danger btn-sm" (click)="visualizationMode = !visualizationMode;"
+                matTooltip="Cancelar"><mat-icon fontIcon="do_disturb"></mat-icon></button>
+            <button type="button" class="btn btn-success btn-sm"
+                (click)="visualizationMode = !visualizationMode; card.id.includes('novo') ? createNewCard(card) : updateCard(card)"
+                matTooltip="Salvar"><mat-icon fontIcon="check"></mat-icon></button>
+        </small>
+    </div>
+    <mat-progress-bar *ngIf="card.lista === 'doing'" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="card.lista === 'todo'" mode="determinate" value="0"></mat-progress-bar>
+    <mat-progress-bar *ngIf="card.lista === 'done'" mode="determinate" value="100"></mat-progress-bar>
+</div>

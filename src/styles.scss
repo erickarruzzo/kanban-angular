@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Zen+Dots&display=swap');
+/* Font: Zen Dots Family */
+
+body {
+    background: white 0%;
+    overflow-x: hidden;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-snack-bar-container {
+    &.green-snackbar {
+        --mdc-snackbar-container-color: green;
+        --mat-mdc-snack-bar-button-color: white;
+        --mdc-snackbar-supporting-text-color: white;
+    }
+    &.red-snackbar {
+        --mdc-snackbar-container-color: red;
+        --mat-mdc-snack-bar-button-color: white;
+        --mdc-snackbar-supporting-text-color: white;
+    }
+    &.white-snackbar {
+        --mdc-snackbar-container-color: white;
+        --mat-mdc-snack-bar-button-color: black;
+        --mdc-snackbar-supporting-text-color: black;
+    }
+}

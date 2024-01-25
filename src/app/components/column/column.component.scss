@@ -1,0 +1,50 @@
+.box-list {
+    border: solid 1px #ccc;
+    min-height: 730px;
+    max-height: 730px;
+    background: lightblue;
+    border-radius: 4px;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.box {
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.box:last-child {
+    border: none;
+}
+
+.box-list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.flutuant-button {
+    z-index: 0;
+    position: fixed;
+    bottom: 5%;
+    left: 80%;
+}
+
+.title-list {
+    text-align: center;
+    font-size: 30px;
+    font-family: "Zen Dots";
+    color: cadetblue;
+}
