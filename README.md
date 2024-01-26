@@ -9,7 +9,7 @@
 
 ## About the project
 
-Projeto realizado para o processo seletivo da ADA Tech.
+Projeto realizado para solução de um desafio da ADA Tech.
 
 ## Getting started
 
