@@ -26,7 +26,7 @@ Para poder rodar o projeto localmente, execute o seguinte comando:
 
 Depois de instalar todas as dependências, já estará apto para rodar o projeto com o seguinte comando:
 
-- `ng serve` para executar o servidor local. Após executar o comando, use o navegado para abrir o programa no endereço: `http://localhost:4200/`.
+- `ng serve` para executar o servidor local. Após executar o comando, use o navegado para abrir o programa na URL: http://localhost:4200/.
 
 ## Run Tests
 
