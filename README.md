@@ -25,15 +25,19 @@ Depois de instalar todas as dependências, já estará apto para rodar o projeto
 
 ## Run with Docker
 
-- `docker build -t angular-docker .` para executar o docker e criar uma imagem do programa
+- `docker build -t node-docker .\backend\` para executar o docker e criar uma imagem do programa do backend
+
+- `docker build -t angular-docker .\frontend\` para executar o docker e criar uma imagem do programa do frontend
 
 ## Docker - Run Image
 
-- `docker run -p 4201:4200 angular-docker` para executar a imagem
+- `docker run -p 5000:5000 node-docker` para executar a imagem do back
+
+- `docker run -p 4200:4200 angular-docker` para executar a imagem do front
 
 ## Docker - Browser
 
-Depois desses passos, já pode abrir no browser a aplicação na URL: http://localhost:4201/
+Depois desses passos, já pode abrir no browser a aplicação na URL: http://localhost:4200/
 
 ## CORS
 
