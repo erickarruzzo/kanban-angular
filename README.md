@@ -23,6 +23,12 @@ Depois de instalar todas as dependências, já estará apto para rodar o projeto
 
 - `ng serve` para executar o servidor local. Após executar o comando, use o navegado para abrir o programa no endereço: `http://localhost:4200/`.
 
+## Run Tests
+
+Para executar os testes primários:
+
+- `ng test`.
+
 ## Run with Docker
 
 - `docker build -t node-docker .\backend\` para executar o docker e criar uma imagem do programa do backend
@@ -56,3 +62,8 @@ app.use(cors(corsOptions));
 
 Apenas esse ponto foi alterado para poder realizar as requisições tanto com a aplicação dockerizada como no server local
 
+## Novas Funcionalidades
+
+- Drag and Drop do card para as colunas
+- Dialog para criação de um novo card
+- Avisos de erro, info ou sucesso na tela
