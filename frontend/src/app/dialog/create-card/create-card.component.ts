@@ -51,16 +51,18 @@ export class CreateCardComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.sharedDataService.todo.splice(0, 0, result.card);
-      this.cardService.newCard(result.card).subscribe({
-        next: () => {
-          this.sharedDataService.getCardsAndPopulateColumns();
-        },
-        error: err => {
-          console.error(err.message, err);
-          this.snackBarService.showErrorSnack("Erro tentar abrir a dialog");
-        }
-      });
+      if (result) {
+        this.sharedDataService.todo.splice(0, 0, result.card);
+        this.cardService.newCard(result.card).subscribe({
+          next: () => {
+            this.sharedDataService.getCardsAndPopulateColumns();
+          },
+          error: err => {
+            console.error(err.message, err);
+            this.snackBarService.showErrorSnack("Erro tentar abrir a dialog");
+          }
+        });
+      }
     });
   }
 }
@@ -87,7 +89,8 @@ export class CreateCardDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) { }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onNoClick() {
+    if (this.dialogRef) this.dialogRef.close()
+    return;
   }
 }
