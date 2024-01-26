@@ -12,9 +12,9 @@
 Projeto realizado para solução de um desafio da ADA Tech.
 O sistema foi desenvolvido em typescript utilizando o framework Angular em sua versão 17 (a mais recente). 
 Foram utilizadas diversas biliotecas e as que mais se destacam são: 
-- Bootstrap e Angular Material: para a construção do layout, formulário e seus componentes
-- Rxjs: Biblioteca para realização de chamadas assíncronas
-- Jasmine: Para construção e execução dos testes unitários
+- Bootstrap e Angular Material: Biblioteca usada para a construção do layout, formulário e seus componentes
+- Rxjs: Biblioteca usada para realização de chamadas assíncronas com o backend
+- Jasmine: Biblioteca usada para construção e execução dos testes unitários
 
 ## Getting started
 
