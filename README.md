@@ -10,7 +10,7 @@
 ## About the project
 
 Projeto realizado para solução de um desafio da ADA Tech.
-O sistema foi desenvolvido em typescript utilizando o framework Angular em sua versão 17 (a mais recente). 
+O sistema foi desenvolvido em typescript utilizando o framework Angular em sua versão 17 (a mais recente na data de desenvolvimento). 
 Foram utilizadas diversas biliotecas e as que mais se destacam são: 
 - Bootstrap e Angular Material: Biblioteca usada para a construção do layout, formulário e seus componentes
 - Rxjs: Biblioteca usada para realização de chamadas assíncronas com o backend
