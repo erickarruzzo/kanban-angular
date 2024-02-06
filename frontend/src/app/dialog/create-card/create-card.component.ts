@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Card } from '../../core/model/card.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { novo, todo } from '../../core/constants/constants';
+import { NOVO, TODO } from '../../core/constants/constants';
 import { ShareDataService } from '../../service/share-data.service';
 import { CardService } from '../../service/http-request/card.service';
 import { SnackbarService } from '../../service/snackbar.service';
@@ -41,10 +41,10 @@ export class CreateCardComponent {
 
   openDialog(): void {
     const card: Card = {
-      id: novo,
+      id: NOVO,
       titulo: "",
       conteudo: "",
-      lista: todo
+      lista: TODO
     }
     const dialogRef = this.dialog.open(CreateCardDialogComponent, {
       data: { card: card },

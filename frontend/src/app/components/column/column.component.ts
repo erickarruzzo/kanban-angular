@@ -7,7 +7,7 @@ import {
 import { Card } from '../../core/model/card.model';
 import { ShareDataService } from '../../service/share-data.service';
 import { CardService } from '../../service/http-request/card.service';
-import { novo } from '../../core/constants/constants';
+import { NOVO } from '../../core/constants/constants';
 import { SnackbarService } from '../../service/snackbar.service';
 
 
@@ -22,7 +22,7 @@ export class ColumnComponent {
   }
 
   drop(event: CdkDragDrop<any[]>, listTo: string) {
-    if (event.item.data.id.includes(novo)) return;
+    if (event.item.data.id.includes(NOVO)) return;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -52,7 +52,7 @@ export class ColumnComponent {
   existsNewCard(): boolean {
     var retorno = false;
     this.sharedDataService.todo.forEach(card => {
-      if (card.id.includes(novo)) retorno = true;
+      if (card.id.includes(NOVO)) retorno = true;
     })
     return retorno;
   }

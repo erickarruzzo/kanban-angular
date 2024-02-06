@@ -2,15 +2,15 @@ import { TestBed, inject } from '@angular/core/testing';
 import { ShareDataService } from './share-data.service';
 import { CardService } from './http-request/card.service';
 import { Observable, of } from 'rxjs';
-import { todo, doing } from '../core/constants/constants';
+import { TODO, DOING } from '../core/constants/constants';
 
 class MockCardService {
   getCards(): Observable<any[]> {
     // Simular a resposta do serviço
     return of([
-      { id: 1, lista: todo },
-      { id: 2, lista: doing },
-      { id: 3, lista: todo },
+      { id: 1, lista: TODO },
+      { id: 2, lista: DOING },
+      { id: 3, lista: TODO },
     ]);
   }
 }
@@ -37,9 +37,9 @@ describe('ShareDataService', () => {
 
   it('should clear lists when calling emptyLists()', () => {
     // Inicializa as listas para simular algum estado atual
-    service.todo = [{ id: 1, lista: todo }];
-    service.doing = [{ id: 2, lista: doing }];
-    service.done = [{ id: 3, lista: doing }];
+    service.todo = [{ id: 1, lista: TODO }];
+    service.doing = [{ id: 2, lista: DOING }];
+    service.done = [{ id: 3, lista: DOING }];
 
     // Chama o método para esvaziar as listas
     service.emptyLists();

@@ -12,7 +12,7 @@ export const httpOptions = {
         'Access-Control-Allow-Credentials': "true"
     })
 };
-export const novo = "novo";
-export const todo = "todo";
-export const doing = "doing";
-export const done = "done";
+export const NOVO = "novo";
+export const TODO = "todo";
+export const DOING = "doing";
+export const DONE = "done";

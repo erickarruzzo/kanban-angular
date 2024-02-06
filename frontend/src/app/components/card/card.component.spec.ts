@@ -5,7 +5,7 @@ import { CardService } from '../../service/http-request/card.service';
 import { SnackbarService } from '../../service/snackbar.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
-import { done, doing, todo } from '../../core/constants/constants';
+import { DONE, DOING, TODO } from '../../core/constants/constants';
 import { MatIconModule } from '@angular/material/icon';
 import { CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
@@ -76,7 +76,7 @@ describe('CardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
-    component.card = { id: 1, lista: todo }; // Adjust card data as needed
+    component.card = { id: 1, lista: TODO }; // Adjust card data as needed
     fixture.detectChanges();
   });
 
@@ -96,7 +96,7 @@ describe('CardComponent', () => {
 
   it('should call updateCard, getCardsAndPopulateColumns, and show success snack when updateCard is called', () => {
     mockCardService.updateCard.and.returnValue(of({}));
-    component.updateCard({ id: "1", lista: todo }, doing);
+    component.updateCard({ id: "1", lista: TODO }, DOING);
 
     expect(mockCardService.updateCard).toHaveBeenCalled();
     expect(mockShareDataService.getCardsAndPopulateColumns).toHaveBeenCalled();
@@ -105,23 +105,23 @@ describe('CardComponent', () => {
 
   it('should call deleteCard and show success snack when deleteCard is called', () => {
     mockCardService.deleteCard.and.returnValue(of({}));
-    component.deleteCard({ id: "1", lista: todo });
+    component.deleteCard({ id: "1", lista: TODO });
 
     expect(mockCardService.deleteCard).toHaveBeenCalled();
     expect(mockSnackbarService.showSuccessSnack).toHaveBeenCalledWith('O cartão selecionado foi excluído com sucesso');
   });
 
   it('should return "Doing" or doing when checkNextColumn is called with appropriate parameters', () => {
-    const card = { id: "1", lista: todo };
+    const card = { id: "1", lista: TODO };
 
-    expect(component.checkNextColumn(card)).toBe(doing);
+    expect(component.checkNextColumn(card)).toBe(DOING);
     expect(component.checkNextColumn(card, true)).toBe('Doing');
   });
 
   it('should return "To Do" or todo when checkPreviousColumn is called with appropriate parameters', () => {
-    const card = { id: "1", lista: doing };
+    const card = { id: "1", lista: DOING };
 
-    expect(component.checkPreviousColumn(card)).toBe(todo);
+    expect(component.checkPreviousColumn(card)).toBe(TODO);
     expect(component.checkPreviousColumn(card, true)).toBe('To Do');
   });
 });

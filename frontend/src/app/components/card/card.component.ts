@@ -3,7 +3,7 @@ import { ShareDataService } from '../../service/share-data.service';
 import { Card } from '../../core/model/card.model';
 import { CardService } from '../../service/http-request/card.service';
 import { SnackbarService } from '../../service/snackbar.service';
-import { doing, done, todo } from '../../core/constants/constants';
+import { DOING, DONE, TODO } from '../../core/constants/constants';
 
 @Component({
   selector: 'app-card',
@@ -81,19 +81,19 @@ export class CardComponent {
 
   checkNextColumn(card: Card, tooltip?: boolean): any {
     const lista = card.lista;
-    if (lista === todo)
-      return tooltip ? "Doing" : doing;
-    else if (lista === doing)
-      return tooltip ? "Done" : done
+    if (lista === TODO)
+      return tooltip ? "Doing" : DOING;
+    else if (lista === DOING)
+      return tooltip ? "Done" : DONE
     return null;
   }
 
   checkPreviousColumn(card: Card, tooltip?: boolean): any {
     const lista = card.lista;
-    if (lista === doing)
-      return tooltip ? "To Do" : todo;
-    else if (lista === done)
-      return tooltip ? "Done" : doing
+    if (lista === DOING)
+      return tooltip ? "To Do" : TODO;
+    else if (lista === DONE)
+      return tooltip ? "Doing" : DOING
     return null;
   }
 }
