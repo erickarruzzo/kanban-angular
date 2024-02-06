@@ -9,7 +9,12 @@
 
 ## About the project
 
-Projeto realizado para o processo seletivo da ADA Tech.
+Projeto realizado para solução de um desafio da ADA Tech.
+O sistema foi desenvolvido em typescript utilizando o framework Angular em sua versão 17 (a mais recente na data de desenvolvimento). 
+Foram utilizadas diversas biliotecas e as que mais se destacam são: 
+- Bootstrap e Angular Material: Bibliotecas usadas para a construção do layout, formulário e seus componentes
+- Rxjs: Biblioteca usada para realização de chamadas assíncronas com o backend
+- Jasmine: Biblioteca usada para construção e execução dos testes unitários
 
 ## Getting started
 
@@ -21,7 +26,7 @@ Para poder rodar o projeto localmente, execute o seguinte comando:
 
 Depois de instalar todas as dependências, já estará apto para rodar o projeto com o seguinte comando:
 
-- `ng serve` para executar o servidor local. Após executar o comando, use o navegado para abrir o programa no endereço: `http://localhost:4200/`.
+- `ng serve` para executar o servidor local. Após executar o comando, use o navegado para abrir o programa na URL: http://localhost:4200/.
 
 ## Run Tests
 
