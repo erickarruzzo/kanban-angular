@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_URL, httpOptions } from '../core/constants/constants';
+import { API_URL, HTTP_OPTIONS } from '../core/constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,6 @@ export class AuthService {
     return this.http.post(API_URL + "login", {
       login: username,
       senha: password,
-    }, httpOptions);
+    }, HTTP_OPTIONS);
   }
 }

@@ -12,7 +12,7 @@ export class CardService {
   constructor(private http: HttpClient, private storageService: StorageService) { }
 
   token = this.storageService.getToken();
-  httpOptions = {
+  httpOptionsToken = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -26,7 +26,7 @@ export class CardService {
 
 
   getCards(): Promise<any> {
-    return this.http.get(API_URL + "cards", this.httpOptions).toPromise();
+    return this.http.get(API_URL + "cards", this.httpOptionsToken).toPromise();
   }
 
   newCard(card: Card): Observable<any> {
@@ -34,7 +34,7 @@ export class CardService {
       titulo: card.titulo,
       conteudo: card.conteudo,
       lista: card.lista
-    }, this.httpOptions);
+    }, this.httpOptionsToken);
   }
 
   updateCard(card: Card): Observable<any> {
@@ -43,10 +43,10 @@ export class CardService {
       titulo: card.titulo,
       conteudo: card.conteudo,
       lista: card.lista
-    }, this.httpOptions);
+    }, this.httpOptionsToken);
   }
 
   deleteCard(card: Card): Observable<any> {
-    return this.http.delete(API_URL + "cards/" + card.id, this.httpOptions);
+    return this.http.delete(API_URL + "cards/" + card.id, this.httpOptionsToken);
   }
 }
