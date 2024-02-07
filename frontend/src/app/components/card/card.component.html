@@ -33,12 +33,12 @@
     <input type="hidden" [(ngModel)]="card.lista" />
     <div class="card-header">
         <mat-form-field appearance="fill">
-            <input matInput [(ngModel)]="card.titulo">
+            <input [id]="'input-' + card.id" matInput [(ngModel)]="card.titulo">
         </mat-form-field>
     </div>
     <div class="card-body">
         <mat-form-field>
-            <textarea rows="5" class="textarea-edit-mode" matInput [(ngModel)]="card.conteudo"></textarea>
+            <textarea [id]="'textarea-' + card.id" rows="5" class="textarea-edit-mode" matInput [(ngModel)]="card.conteudo"></textarea>
         </mat-form-field>
     </div>
     <div class="card-footer">
@@ -46,7 +46,7 @@
             <button type="button" class="btn btn-danger btn-sm" (click)="visualizationMode = !visualizationMode;"
                 matTooltip="Cancelar"><mat-icon fontIcon="do_disturb"></mat-icon></button>
             <button type="button" class="btn btn-success btn-sm"
-                (click)="visualizationMode = !visualizationMode; card.id.includes('novo') ? createNewCard(card) : updateCard(card)"
+                (click)="visualizationMode = !visualizationMode; updateCard(card)"
                 matTooltip="Salvar"><mat-icon fontIcon="check"></mat-icon></button>
         </small>
     </div>

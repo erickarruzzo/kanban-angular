@@ -3,7 +3,6 @@ import { CardComponent } from './card.component';
 import { ShareDataService } from '../../service/share-data.service';
 import { CardService } from '../../service/http-request/card.service';
 import { SnackbarService } from '../../service/snackbar.service';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
 import { DONE, DOING, TODO } from '../../core/constants/constants';
 import { MatIconModule } from '@angular/material/icon';
@@ -82,16 +81,6 @@ describe('CardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-
-  it('should call newCard, getCardsAndPopulateColumns, and show success snack when createNewCard is called', () => {
-    mockCardService.newCard.and.returnValue(of({}));
-    component.createNewCard({});
-
-    expect(mockCardService.newCard).toHaveBeenCalled();
-    expect(mockShareDataService.getCardsAndPopulateColumns).toHaveBeenCalled();
-    expect(mockSnackbarService.showSuccessSnack).toHaveBeenCalledWith('O cartão foi criado com sucesso');
   });
 
   it('should call updateCard, getCardsAndPopulateColumns, and show success snack when updateCard is called', () => {

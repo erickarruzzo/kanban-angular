@@ -21,42 +21,20 @@ export class CardComponent {
     if (!idStr?.includes("novo")) {
       this.deleteCard(card);
     }
-
-    switch (card?.lista) {
-      case "todo": {
-        this.sharedDataService.todo = this.sharedDataService.todo.filter((c: Card) => c.id !== card.id)
-        break;
-      }
-      case "doing": {
-        this.sharedDataService.doing = this.sharedDataService.doing.filter((c: Card) => c.id !== card.id)
-        break;
-      }
-      case "done": {
-        this.sharedDataService.done = this.sharedDataService.done.filter((c: Card) => c.id !== card.id)
-        break;
-      }
-    }
-  }
-
-  createNewCard(card: any) {
-    this.cardService.newCard(card).subscribe({
-      next: async res => {
-        this.sharedDataService.getCardsAndPopulateColumns();
-        this.snackBarService.showSuccessSnack("O cartão foi criado com sucesso");
-      },
-      error: err => {
-        console.error(err.message, err);
-        this.snackBarService.showErrorSnack("Erro ao criar um novo card");
-      }
-    });
   }
 
   updateCard(card: Card, lista?:string) {
-    debugger
+    let beforeList = card.lista;
     if (lista) card.lista = lista;
     this.cardService.updateCard(card).subscribe({
-      next: () => {
-        this.sharedDataService.getCardsAndPopulateColumns();
+      next: c => {
+        this.sharedDataService.columns.forEach(column => {
+          if (column.code === beforeList) {
+            const index = column.cards.indexOf(card);
+            column.cards.splice(index, 1);
+          }
+          if (column.code === lista) column.cards.push(c);
+        });
         this.snackBarService.showSuccessSnack("O cartão selecionado foi alterado com sucesso");
         
       },
@@ -69,7 +47,11 @@ export class CardComponent {
 
   deleteCard(card: any) {
     this.cardService.deleteCard(card).subscribe({
-      next: res => {
+      next: () => {
+        this.sharedDataService.columns.forEach(column => {
+          const index = column.cards.indexOf(card);
+          if (index >= 0) column.cards.splice(index, 1);
+        });
         this.snackBarService.showSuccessSnack("O cartão selecionado foi excluído com sucesso");
       },
       error: err => {

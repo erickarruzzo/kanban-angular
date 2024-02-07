@@ -3,11 +3,11 @@
   <div class="row">
     <mat-form-field class="col-12">
       <mat-label>Título</mat-label>
-      <input matInput [(ngModel)]="data.card.titulo">
+      <input matInput [id]="'input-' + data.card.id" [(ngModel)]="data.card.titulo">
     </mat-form-field>
     <mat-form-field class="col-12">
       <mat-label>Conteúdo</mat-label>
-      <textarea rows="5" matInput [(ngModel)]="data.card.conteudo"></textarea>
+      <textarea [id]="'textarea-' + data.card.id" rows="5" matInput [(ngModel)]="data.card.conteudo"></textarea>
     </mat-form-field>
   </div>
 </div>

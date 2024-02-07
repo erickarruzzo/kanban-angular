@@ -52,7 +52,6 @@ export class CreateCardComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.sharedDataService.todo.splice(0, 0, result.card);
         this.cardService.newCard(result.card).subscribe({
           next: () => {
             this.sharedDataService.getCardsAndPopulateColumns();

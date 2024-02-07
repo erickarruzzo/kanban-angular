@@ -29,6 +29,7 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { CreateCardComponent } from "./dialog/create-card/create-card.component";
+import { BoardComponent } from './components/board/board.component';
 
 
 
@@ -39,7 +40,8 @@ import { CreateCardComponent } from "./dialog/create-card/create-card.component"
         CardComponent,
         ColumnComponent,
         ContainerComponent,
-        HeaderComponent
+        HeaderComponent,
+        BoardComponent
     ],
     providers: [httpInterceptorProviders, provideAnimations()],
     bootstrap: [AppComponent],

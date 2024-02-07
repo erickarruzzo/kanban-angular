@@ -1,30 +1,19 @@
-<div class="row justify-content-center" cdkDropListGroup>
-    <div class="col-lg-3 col-md-auto col-sm-auto">
-        <h2 class="title-list">To Do</h2>
-        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="sharedDataService.todo" [cdkDropListConnectedTo]="[doingList]" class="box-list"
-            (cdkDropListDropped)="drop($event, 'todo'); updateCard">
-            <ng-container *ngFor="let item of sharedDataService.todo">
-                <app-card class="box" [card]="item" cdkDrag [cdkDragData]="item"></app-card>
-            </ng-container>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-auto col-sm-auto">
-        <h2 class="title-list">Doing</h2>
-        <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="sharedDataService.doing" [cdkDropListConnectedTo]="[todoList, doneList]" class="box-list"
-            (cdkDropListDropped)="drop($event, 'doing'); updateCard">
-            <ng-container *ngFor="let item of sharedDataService.doing">
-                <app-card class="box" [card]="item" cdkDrag [cdkDragData]="item"></app-card>
-            </ng-container>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-auto col-sm-auto">
-        <h2 class="title-list">Done</h2>
-        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="sharedDataService.done" [cdkDropListConnectedTo]="[doingList]" class="box-list"
-            (cdkDropListDropped)="drop($event, 'done')">
-            <ng-container *ngFor="let item of sharedDataService.done">
-                <app-card class="box" [card]="item" cdkDrag [cdkDragData]="item"></app-card>
-            </ng-container>
-        </div>
-    </div>
+<h2 class="title-list">{{columnName}}</h2>
+<div *ngIf="beforeList && afterList" [id]="columnID" cdkDropList [cdkDropListData]="columnCards"
+    [cdkDropListConnectedTo]="[beforeList, afterList]" [cdkDropListAutoScrollDisabled]="false" class="box-list" (cdkDropListDropped)="drop($event, columnCode);">
+    <ng-container *ngFor="let card of columnCards">
+        <app-card class="box" [card]="card" cdkDrag [cdkDragData]="card"></app-card>
+    </ng-container>
 </div>
-<app-create-card [disabled]="existsNewCard()"></app-create-card>
+<div *ngIf="beforeList && !afterList" [id]="columnID" cdkDropList [cdkDropListData]="columnCards"
+    [cdkDropListConnectedTo]="[beforeList]" [cdkDropListAutoScrollDisabled]="false" class="box-list" (cdkDropListDropped)="drop($event, columnCode);">
+    <ng-container *ngFor="let card of columnCards">
+        <app-card class="box" [card]="card" cdkDrag [cdkDragData]="card"></app-card>
+    </ng-container>
+</div>
+<div *ngIf="!beforeList && afterList" [id]="columnID" cdkDropList [cdkDropListData]="columnCards"
+    [cdkDropListConnectedTo]="[afterList]" [cdkDropListAutoScrollDisabled]="false" class="box-list" (cdkDropListDropped)="drop($event, columnCode);">
+    <ng-container *ngFor="let card of columnCards">
+        <app-card class="box" [card]="card" cdkDrag [cdkDragData]="card"></app-card>
+    </ng-container>
+</div>
