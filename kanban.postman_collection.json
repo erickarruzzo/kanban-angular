@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "19866b1c-5741-4c20-acf9-3094319551cc",
+		"name": "ADA TECH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28494950"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var token = pm.response.json();\r",
+							"pm.environment.set(\"tokenADA\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"letscode\",\r\n    \"senha\": \"lets@123\"\r\n}"
+				},
+				"url": {
+					"raw": "{{api_url}}/login",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const user = pm.environment.get(\"user\");\r",
+							"const password = pm.environment.get(\"password\");\r",
+							"\r",
+							"const options = {\r",
+							"  url:  'http://0.0.0.0:5000/login', \r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Accept': '*/*',\r",
+							"    'Content-Type': 'application/json',\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({'login': user, 'senha': password})\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(options, function (err, response) {\r",
+							"    pm.environment.set(\"tokenADA\", response.json())\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenADA}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_url}}/cards/",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"cards",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Card",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const user = pm.environment.get(\"user\");\r",
+							"const password = pm.environment.get(\"password\");\r",
+							"\r",
+							"const options = {\r",
+							"  url:  'http://0.0.0.0:5000/login', \r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Accept': '*/*',\r",
+							"    'Content-Type': 'application/json',\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({'login': user, 'senha': password})\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(options, function (err, response) {\r",
+							"    pm.environment.set(\"tokenADA\", response.json())\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenADA}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_url}}/cards/abc49250-c43d-4800-b0aa-7e1d785afebf",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"cards",
+						"abc49250-c43d-4800-b0aa-7e1d785afebf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Card",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const user = pm.environment.get(\"user\");\r",
+							"const password = pm.environment.get(\"password\");\r",
+							"\r",
+							"const options = {\r",
+							"  url:  'http://0.0.0.0:5000/login', \r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Accept': '*/*',\r",
+							"    'Content-Type': 'application/json',\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({'login': user, 'senha': password})\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(options, function (err, response) {\r",
+							"    pm.environment.set(\"tokenADA\", response.json())\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenADA}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"1eea8eb7-1923-4949-a84f-74ef5567c3ab\",\r\n    \"titulo\": \"Card 3\",\r\n    \"conteudo\": \"Card 3\",\r\n    \"lista\": \"todo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/cards/1eea8eb7-1923-4949-a84f-74ef5567c3ab",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"cards",
+						"1eea8eb7-1923-4949-a84f-74ef5567c3ab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Card",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const user = pm.environment.get(\"user\");\r",
+							"const password = pm.environment.get(\"password\");\r",
+							"\r",
+							"const options = {\r",
+							"  url:  'http://0.0.0.0:5000/login', \r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Accept': '*/*',\r",
+							"    'Content-Type': 'application/json',\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({'login': user, 'senha': password})\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(options, function (err, response) {\r",
+							"    pm.environment.set(\"tokenADA\", response.json())\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenADA}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Teste\",\r\n    \"conteudo\": \"Teste\",\r\n    \"lista\": \"todo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/cards",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "tokenADA",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibGV0c2NvZGUiLCJpYXQiOjE3MDYxMzkxMzMsImV4cCI6MTcwNjE0MjczM30.PlL5HyGENmPsAkV9hQkzrsb0wVk2xY2IyBFU_446apQ"
+		}
+	]
+}
