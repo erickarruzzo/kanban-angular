@@ -1,18 +1,6 @@
 <h2 class="title-list">{{columnName}}</h2>
-<div *ngIf="beforeList && afterList" [id]="columnID" cdkDropList [cdkDropListData]="columnCards"
-    [cdkDropListConnectedTo]="[beforeList, afterList]" [cdkDropListAutoScrollDisabled]="false" class="box-list" (cdkDropListDropped)="drop($event, columnCode);">
-    <ng-container *ngFor="let card of columnCards">
-        <app-card class="box" [card]="card" cdkDrag [cdkDragData]="card"></app-card>
-    </ng-container>
-</div>
-<div *ngIf="beforeList && !afterList" [id]="columnID" cdkDropList [cdkDropListData]="columnCards"
-    [cdkDropListConnectedTo]="[beforeList]" [cdkDropListAutoScrollDisabled]="false" class="box-list" (cdkDropListDropped)="drop($event, columnCode);">
-    <ng-container *ngFor="let card of columnCards">
-        <app-card class="box" [card]="card" cdkDrag [cdkDragData]="card"></app-card>
-    </ng-container>
-</div>
-<div *ngIf="!beforeList && afterList" [id]="columnID" cdkDropList [cdkDropListData]="columnCards"
-    [cdkDropListConnectedTo]="[afterList]" [cdkDropListAutoScrollDisabled]="false" class="box-list" (cdkDropListDropped)="drop($event, columnCode);">
+<div [id]="columnID" cdkDropList [cdkDropListData]="columnCards"
+    [cdkDropListConnectedTo]="connectedLists" [cdkDropListAutoScrollDisabled]="false" class="box-list" (cdkDropListDropped)="drop($event, columnCode);">
     <ng-container *ngFor="let card of columnCards">
         <app-card class="box" [card]="card" cdkDrag [cdkDragData]="card"></app-card>
     </ng-container>

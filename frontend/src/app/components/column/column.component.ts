@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   CdkDragDrop,
   CdkDropList,
@@ -18,7 +18,7 @@ import { Column } from '../../core/model/column.model';
   templateUrl: './column.component.html',
   styleUrl: './column.component.scss'
 })
-export class ColumnComponent {
+export class ColumnComponent implements OnInit {
   @Input() columnName: string | undefined;
   @Input() columnCode: string | undefined;
   @Input() columnID: string = "";
@@ -26,8 +26,21 @@ export class ColumnComponent {
   @Input() afterList: string | undefined;
   @Input() columnCards!: Card[];
 
+  connectedLists: string[] = [];
 
-  constructor(public sharedDataService: ShareDataService, private cardService: CardService, private snackBarService: SnackbarService) {
+  constructor(public sharedDataService: ShareDataService, private cardService: CardService, private snackBarService: SnackbarService) { }
+  
+  ngOnInit(): void {
+    this.buildConnectedList();
+  }
+
+  buildConnectedList() {
+    if (this.beforeList) {
+      this.connectedLists.push(this.beforeList);
+    }
+    if (this.afterList) {
+      this.connectedLists.push(this.afterList);
+    }
   }
 
   drop(event: CdkDragDrop<any[]>, listTo?: string) {
