@@ -29,11 +29,18 @@ export class CardComponent {
     this.cardService.updateCard(card).subscribe({
       next: c => {
         this.sharedDataService.columns.forEach(column => {
-          if (column.code === beforeList) {
+          if (lista) {
+            if (column.code === beforeList) {
+              const index = column.cards.indexOf(card);
+              column.cards.splice(index, 1);
+            }
+            if (column.code === lista) column.cards.push(c);
+          } else {
             const index = column.cards.indexOf(card);
-            column.cards.splice(index, 1);
+            if (index >= 0) {
+              column.cards[index] = c;
+            }
           }
-          if (column.code === lista) column.cards.push(c);
         });
         this.snackBarService.showSuccessSnack("O cartão selecionado foi alterado com sucesso");
         
