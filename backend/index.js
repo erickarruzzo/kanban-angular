@@ -35,22 +35,22 @@ app.post('/login', (req, res) => {
 });
 
 const jwtValidation = (req, res, next) => {
-    try {
-        const { JWT_SECRET } = process.env;
-        const auth = req.headers.authorization;
-        const token = auth.replace('Bearer ', '');
-        if (auth) {
-            const decoded = jwt.verify(token, JWT_SECRET);
-            res.locals = { user: decoded.user };
-            console.info('JWT Middleware - validated token for user: ' + decoded.user);
-        }
-        else throw new Error("token not found");
-    }
-    catch (err) {
-        console.info('JWT Middleware - error validating token\n' + err);
-        res.sendStatus(401);
-        return res.end();
-    }
+    // try {
+    //     const { JWT_SECRET } = process.env;
+    //     const auth = req.headers.authorization;
+    //     const token = auth.replace('Bearer ', '');
+    //     if (auth) {
+    //         const decoded = jwt.verify(token, JWT_SECRET);
+    //         res.locals = { user: decoded.user };
+    //         console.info('JWT Middleware - validated token for user: ' + decoded.user);
+    //     }
+    //     else throw new Error("token not found");
+    // }
+    // catch (err) {
+    //     console.info('JWT Middleware - error validating token\n' + err);
+    //     res.sendStatus(401);
+    //     return res.end();
+    // }
     next();
 };
 
