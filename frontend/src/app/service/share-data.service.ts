@@ -20,21 +20,22 @@ export class ShareDataService {
   public todo: any[] = [];
   public doing: any[] = [];
   public done: any[] = [];
-  public cards: any[] = [];
+  public cards: Card[] = [];
 
   emptyLists() {
     this.columns.forEach(column => column.cards = []);
   }
 
-  async getCardsAndPopulateColumns(): Promise<void> {
-    this.cards = await this.cardService.getCards();
-    console.log("me chamando")
-    this.emptyLists();
-    this.cards.forEach((card: any) => {
-      this.columns.forEach(column => {
-        if (column.code == card.lista) column.cards?.push(card);
-      })
+  getCardsAndPopulateColumns() {
+    this.cardService.getCards().subscribe(cards => {
+      console.log(cards, 'Cards')
+      this.cards = cards;
+      //this.emptyLists();
+      this.cards.forEach((card: any) => {
+        this.columns.forEach(column => {
+          if (column.code == card.lista) column.cards?.push(card);
+        })
+      });
     });
   }
-
 }

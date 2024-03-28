@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private storageService: StorageService, private snackBarService: SnackbarService) { }
 
   ngOnInit(): void {
-    this.login();
+    // this.login();
   }
 
   login(): void {
